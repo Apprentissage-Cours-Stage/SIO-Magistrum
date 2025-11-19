@@ -1,5 +1,5 @@
 #Fichier du projet Django
-env/
+venv/
 *.pyc
 __pycache__/
 db.sqlite3
