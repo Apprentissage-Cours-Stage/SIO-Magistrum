@@ -3,9 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <title>Site d'E-Learning SIO - Accueil</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'home/index.css' %}">
     </head>
     <body>
-        <h1>Bienvenue sur le site de E-Learning SIO !</h1>
-        <p>Ceci est la page d'accueil.</p>
+        <header>
+            <div class="header-left">
+                <h1>Site E-learning</h1>
+                <p class="subtitle">La plateforme dédié à la pratique pour les étudiants du BTS SIO</p>
+            </div>
+            <div class="header-center">
+                <img src="{% static 'home/ASSETS/SIOLOGO.png' %}" alt="Logo SIO" class="logo">
+            </div>
+            <nav class="header-right">
+                <a href="#">Accueil</a>
+                <a href="#">Cours</a>
+                <a href="#">Connexion</a>
+            </nav>
+        </header>
+        <main>
+            <h1>Bienvenue sur le site de E-Learning SIO !</h1>
+            <p>Une plateforme d’e-learning conçue par des élèves de BTS SIO, 
+                dédiée à la mise en pratique et à l’accompagnement des étudiants du BTS SIO.
+            </p>
+        </main>
     </body>
 </html>
