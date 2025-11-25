@@ -1,5 +1,5 @@
 """
-ASGI config for e_learningsio project.
+ASGI config for SIOMagistrum project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

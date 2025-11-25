@@ -1,5 +1,5 @@
 """
-WSGI config for e_learningsio project.
+WSGI config for SIOMagistrum project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
