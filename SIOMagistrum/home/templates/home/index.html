@@ -13,62 +13,52 @@
     {% include 'partials/header.html' %}
     <main>
         <h1>Bienvenue sur SIO Magistrum !</h1>
-        <p>Une plateforme d’e-learning conçue par des élèves de BTS SIO,
+        <p>
+            Une plateforme d’e-learning conçue par des élèves de BTS SIO,
             dédiée à la mise en pratique et à l’accompagnement des étudiants du BTS SIO.
         </p>
         <section id="presentation">
             <h2>Pourquoi utiliser cette plateforme ?</h2>
             <p>
                 Cette plateforme d'e-learning vous permet de renforcer et d'approfondir vos compétences dans le cadre du
-                BTS SIO.
-                La pratique n'étant pas toujours couverte dans son intégralité au sein du cursus classique,
-                notre plateforme vient compléter cet apprentissage. <br>
+                BTS SIO. La pratique n'étant pas toujours couverte dans son intégralité au sein du cursus classique,
+                notre plateforme vient compléter cet apprentissage.<br>
                 Que vous soyez débutant ou expérimenté, en SISR comme en SLAM,
                 un parcours personnalisé vous sera proposé, adapté à votre niveau grâce à un test de positionnement
-                réalisé lors de la création de votre compte. <br>
+                réalisé lors de la création de votre compte.<br>
                 Les enseignants bénéficient également d’un suivi dédié :
-                chaque professeur de matière technique peut consulter l’avancée de ses élèves dans les différents
-                modules.
+                chaque professeur de matière technique peut consulter l’avancée de ses élèves dans les différents modules.
             </p>
             <div class="cards-container">
-                <!-- Carte Module de cours -->
                 <div class="card">
-                    <h3>Module de cours adaptée</h3>
-                    <p>Accédez à différents modules conçus pour vous permettre d’acquérir les notions clés
-                        des blocs du BTS SIO, quelle que soit votre option.</p>
+                    <h3>Modules de cours adaptés</h3>
+                    <p>Accédez à différents modules pour acquérir les notions clés des blocs du BTS SIO, quelle que soit votre option.</p>
                 </div>
-                <!-- Carte Exercices pratiques -->
                 <div class="card">
-                    <h3>Exercices pratiques (Devèloppement ou réseau)</h3>
-                    <p>Mettez vos compétences à l’épreuve grâce à des exercices de compréhension, d’analyse de code
-                        ou d’écriture technique adaptés à votre niveau.</p>
+                    <h3>Exercices pratiques</h3>
+                    <p>Mettez vos compétences à l’épreuve grâce à des exercices de compréhension, d’analyse de code ou d’écriture technique adaptés à votre niveau.</p>
                 </div>
-                <!-- Carte Exercices avec résultat concret -->
                 <div class="card">
-                    <h3>Des résultats concrets de ce que vous ecrivez</h3>
-                    <p>Tous vos scripts ou commandes seront exécutés en temps réel sur une machine virtuelle
-                        containerisée,
-                        vous permettant de visualiser immédiatement le résultat de votre travail.</p>
+                    <h3>Résultats concrets en temps réel</h3>
+                    <p>Tous vos scripts ou commandes sont exécutés sur une machine virtuelle, vous permettant de visualiser immédiatement le résultat de votre travail.</p>
                 </div>
-                <!-- Carte Suivi en temps réel -->
                 <div class="card">
-                    <h3>Suivi de progression en temps réel</h3>
-                    <p>Élèves comme professeurs disposent d’un suivi complet : votre progression s’affiche en temps réel
-                        et chaque réponse est automatiquement sauvegardée.</p>
+                    <h3>Suivi de progression</h3>
+                    <p>Élèves et professeurs disposent d’un suivi complet : votre progression s’affiche en temps réel et chaque réponse est automatiquement sauvegardée.</p>
                 </div>
             </div>
         </section>
+
         <section class="connexion-section">
             <div class="prof-section">
-                <h2>Vous êtes professeur de matières techniques dans un BTS SIO ?</h2>
-                <p>Connectez-vous pour accéder aux différents modules (B1, B2, B3) et suivre la progression de vos
-                    élèves.</p>
-                <a class="connexion-btn" href="{% url 'prof_login' %}">Connectez-vous en tant que professeur</a>
+                <h2>Vous êtes professeur ?</h2>
+                <p>Connectez-vous pour accéder aux modules (B1, B2, B3) et suivre la progression de vos élèves.</p>
+                <a class="connexion-btn" href="{% url 'prof_login' %}">Connexion Professeur</a>
             </div>
             <div class="eleve-section">
-                <h2>Vous êtes élève et souhaitez approfondir vos connaissances pratiques ?</h2>
+                <h2>Vous êtes élève ?</h2>
                 <p>Entrez vos identifiants pour accéder aux modules et vous entraîner, quelle que soit votre option.</p>
-                <a class="connexion-btn" href="{% url 'eleve_login' %}">Connectez-vous en tant qu'élève</a>
+                <a class="connexion-btn" href="{% url 'eleve_login' %}">Connexion Élève</a>
             </div>
         </section>
     </main>

@@ -2,14 +2,14 @@
 <header>
     <div class="header-left">
         <h1>SIO Magistrum</h1>
-        <p class="subtitle">La plateforme dédié à la pratique pour les étudiants du BTS SIO</p>
+        <p class="subtitle">La plateforme dédiée à la pratique pour les étudiants du BTS SIO</p>
     </div>
     <div class="header-center">
         <img src="{% static 'home/ASSETS/SIOLOGO.png' %}" alt="Logo SIO" class="logo">
     </div>
     <nav class="header-right">
         <div class="nav-links">
-            <a href="#">Accueil</a>
+            <a href="{% url 'home' %}">Accueil</a>
             <a href="#">Cours</a>
         </div>
         <section class="login-card">
