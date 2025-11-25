@@ -7,6 +7,7 @@ Modèle Élève
 
 class Eleve(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='eleve')
+    photo = models.ImageField(upload_to='photos_eleves/', blank=True, null=True)
     pseudo = models.CharField(max_length=50)
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
@@ -38,6 +39,7 @@ Modèle Professeur
 
 class Professeur(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='professeur')
+    photo = models.ImageField(upload_to='photo_profs/', blank=True, null=True)
     pseudo = models.CharField(max_length=50)
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
