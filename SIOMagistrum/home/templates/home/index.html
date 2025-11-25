@@ -63,10 +63,12 @@
                 <h2>Vous êtes professeur de matières techniques dans un BTS SIO ?</h2>
                 <p>Connectez-vous pour accéder aux différents modules (B1, B2, B3) et suivre la progression de vos
                     élèves.</p>
+                <a class="connexion-btn" href="{% url 'prof_login' %}">Connectez-vous en tant que professeur</a>
             </div>
             <div class="eleve-section">
                 <h2>Vous êtes élève et souhaitez approfondir vos connaissances pratiques ?</h2>
                 <p>Entrez vos identifiants pour accéder aux modules et vous entraîner, quelle que soit votre option.</p>
+                <a class="connexion-btn" href="{% url 'eleve_login' %}">Connectez-vous en tant qu'élève</a>
             </div>
         </section>
     </main>
