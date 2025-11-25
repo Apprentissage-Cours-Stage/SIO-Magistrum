@@ -3,7 +3,7 @@ header {
     background-color: var(--primary);
     padding: 15px 20px;
     display: grid;
-    grid-template-columns: 240px 1fr 240px;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 10px;
     border-bottom: 6px solid var(--accent);
@@ -26,7 +26,7 @@ header {
     .header-right {grid-area: right; order: 3; justify-self: end;}
 }
 
-.header-left, nav {
+.header-left{
     min-width: 475px;
 }
 
@@ -65,7 +65,16 @@ header .logo {
     min-width: 100px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 25px;
+    flex: 1;
 }
 
 .header-right a {
@@ -99,9 +108,42 @@ header .logo {
     width: 100%
 }
 
-.header-right .login-logo img.svg-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    filter: invert(100%);
+.login-card {
+    width: 175px;
+    height: 70px;
+    margin: 0.8rem auto;
+    background: var(--secondary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 1.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-left: 5px solid var(--accent);
+}
+
+/* Image réduite */
+.login-image img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.login-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.login-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--primary);
+}
+
+.login-role {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    color: #000;
 }

@@ -8,10 +8,18 @@
         <img src="{% static 'home/ASSETS/SIOLOGO.png' %}" alt="Logo SIO" class="logo">
     </div>
     <nav class="header-right">
-        <a href="#">Accueil</a>
-        <a href="#">Cours</a>
-        <a href="#" class="login-logo">
-            <img src="{% static 'home/ASSETS/ACCOUNT.svg' %}" alt="Compte" class="svg-icon"> 
-        </a>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#">Cours</a>
+        </div>
+        <section class="login-card">
+            <div class="login-image">
+                <img src="{% static 'home/ASSETS/ACCOUNT.svg' %}" alt="Compte" class="svg-icon">
+            </div>
+            <div class="login-info">
+                <h3 class="login-name">Nom de compte</h3>
+                <p class="login-role">Rôle de l'utilisateur</p>
+            </div>
+        </section>
     </nav>
 </header>
