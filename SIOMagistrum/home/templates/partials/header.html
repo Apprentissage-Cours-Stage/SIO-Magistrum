@@ -14,11 +14,39 @@
         </div>
         <section class="login-card">
             <div class="login-image">
-                <img src="{% static 'home/ASSETS/ACCOUNT.svg' %}" alt="Compte" class="svg-icon">
+                <img src="{% if request.user.is_authenticated %}
+                    {% if request.user.eleve and request.user.eleve.photo %}
+                        {{ request.user.eleve.photo.url }}
+                    {% elif request.user.professeur and request.user.professeur.photo %}
+                        {{ request.user.professeur.photo.url }}
+                    {% else %}
+                        {% static 'home/ASSETS/ACCOUNT.svg' %}
+                    {% endif %}
+                 {% else %}
+                    {% static 'home/ASSETS/ACCOUNT.svg' %}
+                 {% endif %}"  
+                    alt="Compte" class="svg-icon">
             </div>
             <div class="login-info">
-                <h3 class="login-name">Nom de compte</h3>
-                <p class="login-role">Rôle de l'utilisateur</p>
+                {% if request.user.is_authenticated %}
+                    <h3 class="login-name">
+                        {% if request.user.eleve %}
+                            {{ request.user.eleve.pseudo}}
+                        {% elif request.user.professeur %}
+                            {{request.user.professeur.pseudo}}
+                        {% endif %}
+                    </h3>
+                    <p class="login-role">
+                        {% if request.user.eleve %}
+                            Élève
+                        {% elif request.user.professeur %}
+                            Professeur
+                        {% endif %}
+                    </p>
+                {% else %}
+                    <h3 class="login-name">Non connecté</h3>
+                    <p class="login-role">Veuillez vous connecter</p>
+                {% endif %}
             </div>
         </section>
     </nav>
