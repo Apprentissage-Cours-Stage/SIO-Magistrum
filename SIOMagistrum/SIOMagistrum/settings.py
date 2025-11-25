@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'e_learningsio.wsgi.application'
+WSGI_APPLICATION = 'SIOMagistrum.wsgi.application'
 
 
 # Database
