@@ -64,3 +64,26 @@ h2 {
 .card p {
     font-size: 0.95rem;
 }
+
+.connexion-section {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    box-sizing: border-box;
+}
+
+.prof-section, .eleve-section {
+    flex: 1;
+    min-width: 300px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.prof-section h2, .eleve-section h2 {
+    margin-top: 0;
+}
