@@ -36,7 +36,7 @@ class Matiere(models.Model):
 Modèle Professeur
 '''
 
-class Professeur(models.model):
+class Professeur(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='professeur')
     pseudo = models.CharField(max_length=50)
     nom = models.CharField(max_length=50)
