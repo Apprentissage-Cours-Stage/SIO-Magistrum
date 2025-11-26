@@ -1,1 +1,72 @@
-<h2>Connexion Eleve</h2>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIO Magistrum - Inscription/Connexion Eleve</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/logineleve.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/header.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
+</head>
+
+<body>
+    {% include 'partials/header.html' %}
+    <section class="auth-section">
+        <!-- Connexion -->
+        <div class="auth-card">
+            <h2>Connexion</h2>
+            <p>Connectez-vous à votre compte</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" name="password" placeholder="Votre mot de passe"
+                        required>
+                </div>
+                <button type="submit" class="auth-btn">Se connecter</button>
+            </form>
+            <p class="auth-switch">
+                <a href="#signup">Pas encore de compte ? Inscrivez-vous</a>
+            </p>
+        </div>
+
+        <!-- Inscription -->
+        <div class="auth-card" id="signup">
+            <h2>Inscription</h2>
+            <p>Créez un compte pour accéder aux modules</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="signup-name">Nom complet</label>
+                    <input type="text" id="signup-name" name="name" placeholder="Votre nom complet" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Mot de passe</label>
+                    <input type="password" id="signup-password" name="password" placeholder="Votre mot de passe"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password2">Confirmer le mot de passe</label>
+                    <input type="password" id="signup-password2" name="password2"
+                        placeholder="Confirmez le mot de passe" required>
+                </div>
+                <button type="submit" class="auth-btn">S'inscrire</button>
+            </form>
+            <p class="auth-switch">
+                <a href="#login">Déjà inscrit ? Connectez-vous</a>
+            </p>
+        </div>
+    </section>
+    {% include 'partials/footer.html' %}
+</body>
+
+</html>
