@@ -28,7 +28,7 @@ main {
 }
 
 /* Titres */
-h1 {
+.title {
     text-align: center;
     color: var(--primary);
     margin-bottom: 20px;
