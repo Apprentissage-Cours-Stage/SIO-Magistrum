@@ -28,4 +28,4 @@ def inscription_prof(request):
             return redirect('prof_login')
     else:
         form = InscriptionProfForm()
-    return render(request, 'users/loginprof.html', {'form': form})
+    return render(request, 'users/inscriptionprof.html', {'form': form})

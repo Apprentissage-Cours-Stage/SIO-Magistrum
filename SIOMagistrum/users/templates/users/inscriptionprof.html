@@ -5,42 +5,20 @@
     <meta charset="UTF-8">
     <title>SIO Magistrum - Inscription/Connexion Eleve</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'users/CSS/loginprof.css' %}">
+    <link rel="stylesheet" href="{% static 'users/CSS/inscriptionprof.css' %}">
     <link rel="stylesheet" href="{% static 'partials/header.css' %}">
     <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
 </head>
 
 <body>
     {% include 'partials/header.html' %}
-    <section class="auth-section" id="login">
-        <!-- Connexion -->
-        <div class="auth-card">
-            <h2>Connexion</h2>
-            <p>Connectez-vous à votre compte</p>
-
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" name="email" placeholder="Votre email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Mot de passe</label>
-                    <input type="password" id="login-password" name="password" placeholder="Votre mot de passe"
-                        required>
-                </div>
-                <button type="submit" class="auth-btn">Se connecter</button>
-            </form>
-            <p class="auth-switch">
-                <a href="#signup">Pas encore de compte ? Inscrivez-vous</a>
-            </p>
-        </div>
-
-        <!-- Inscription -->
+    <br>
+    <div class="auth-wrapper">
         <div class="auth-card" id="signup">
             <h2>Inscription</h2>
             <p>Créez un compte pour accéder aux modules</p>
 
-            <form method="POST" enctype="multipart/form-data" action="{% url 'prof_login' %}">
+            <form method="POST" enctype="multipart/form-data" action="{% url 'inscription_prof' %}">
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Photo de profil</label>
@@ -83,9 +61,9 @@
                 <a href="#login">Déjà inscrit ? Connectez-vous</a>
             </p>
         </div>
-    </section>
+    </div>
     {% include 'partials/footer.html' %}
-<script src="{% static 'users/JAVASCRIPT/loginprof.js' %}"></script>
+    <script src="{% static 'users/JAVASCRIPT/inscriptionprof.js' %}"></script>
 </body>
 
 </html>

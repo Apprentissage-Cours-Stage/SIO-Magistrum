@@ -18,22 +18,22 @@ body {
 
 .auth-section {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: center;   /* centre horizontalement */
+    align-items: center;       /* centre verticalement */
+    min-height: 100vh;         /* prend toute la hauteur de l'écran */
     gap: 40px;
-    padding: 80px 20px;
-    background-color: #f0f8fa;
+    padding: 20px;
     flex-wrap: wrap;
+    background-color: #f0f8fa;
 }
 
-.auth-section {
+.auth-wrapper {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 60px 20px;
+    align-items: center;
+    min-height: 100vh; /* prend toute la hauteur de l'écran */
     background-color: #f0f8fa;
-    flex-wrap: wrap;
+    padding: 20px;
 }
 
 /* --- Carte Connexion / Inscription --- */
