@@ -8,15 +8,14 @@ class InscriptionProfForm(forms.ModelForm):
     password2 = forms.CharField(widget=forms.PasswordInput)
     matieres = forms.ModelMultipleChoiceField(
     queryset=Matiere.objects.all(),
-    widget=forms.SelectMultiple(attrs={
-        'class': 'select-multiple',
-        'size': 5,
-    }),  # au lieu de CheckboxSelectMultiple
-    required=True
+    widget=forms.Select(attrs={"id": "matières"})
 )
     class Meta:
         model = Professeur
         fields = ['pseudo', 'nom', "prenom", "matieres", 'photo']
+        widgets = {
+            'matières': forms.Select(attrs={'id': 'matières'})
+        }
     
     def clean(self):
         cleaned_data = super().clean()
