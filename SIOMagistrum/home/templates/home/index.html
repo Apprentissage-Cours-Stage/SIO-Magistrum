@@ -54,12 +54,14 @@
             <div class="prof-section">
                 <h2>Vous êtes professeur ?</h2>
                 <p>Connectez-vous pour accéder aux modules (B1, B2, B3) et suivre la progression de vos élèves.</p>
-                <a class="connexion-btn" href="{% url 'inscription_prof' %}">Connexion Professeur</a>
+                <a class="connexion-btn" href="{% url 'login_prof' %}">Connexion Élève</a>
+                <a class="connexion-btn" href="{% url 'inscription_prof' %}">Inscription Professeur</a>
             </div>
             <div class="eleve-section">
                 <h2>Vous êtes élève ?</h2>
                 <p>Entrez vos identifiants pour accéder aux modules et vous entraîner, quelle que soit votre option.</p>
-                <a class="connexion-btn" href="{% url 'eleve_login' %}">Connexion Élève</a>
+                <a class="connexion-btn" href="{% url 'login_eleve' %}">Connexion Élève</a>
+                <a class="connexion-btn" href="{% url 'inscription_eleve' %}">Inscription Élève</a>
             </div>
         </section>
     </main>
