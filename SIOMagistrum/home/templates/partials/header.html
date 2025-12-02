@@ -10,7 +10,19 @@
     <nav class="header-right">
         <div class="nav-links">
             <a href="{% url 'home' %}">Accueil</a>
-            <a href="#">Cours</a>
+            {% if request.user.is_authenticated %}
+                {% if request.user.professeur %}
+                    <a href="{% url 'dashboard:dashboard_prof' %}">Dashboard</a>
+                    <a href="#">Vos Exercices</a>
+                    <a href="#">Vos Classes</a>
+                    <a href="#">Votre Parcours d'entrainement</a>
+                    <a href="#">Vos Approfondissements</a>
+                {% else %}
+                    <a href="#">Dashboard</a>
+                    <a href="#">Vos cours suivies</a>
+                    <a href="#">Vos approfondissements suivis</a>
+                {% endif %}
+            {% endif %}
         </div>
         <section class="login-card">
             <div class="login-image">
