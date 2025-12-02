@@ -8,12 +8,19 @@
         <div class="footer-center">
             <h4>Navigation</h4>
             <a href="{% url 'home' %}">Accueil</a>
-            <a href="#">Cours</a>
-        </div>
-        <div class="footer-right">
-            <h4>Contact</h4>
-            <p>Email : contact@siomagistrum.fr</p>
-            <p>Téléphone : 01 23 45 67 89</p>
+            {% if request.user.is_authenticated %}
+                {% if request.user.professeur %}
+                    <a href="{% url 'dashboard:dashboard_prof' %}">Dashboard</a>
+                    <a href="#">Vos Exercices</a>
+                    <a href="#">Vos Classes</a>
+                    <a href="#">Votre Parcours d'entrainement</a>
+                    <a href="#">Vos Approfondissements</a>
+                {% else %}
+                    <a href="#">Dashboard</a>
+                    <a href="#">Vos cours suivies</a>
+                    <a href="#">Vos approfondissements suivis</a>
+                {% endif %}
+            {% endif %}
         </div>
     </div>
     <div class="footer-bottom">
