@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 from django.db import transaction
 from .forms import InscriptionProfForm
 from .models import Professeur
@@ -9,6 +10,20 @@ def eleve_login(request):
     return render(request, 'users/logineleve.html')
 
 def prof_login(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            user = None
+        if user:
+            user = authenticate(request, username=user.username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard:dashboard_prof')
+        error_message = "Email ou mot de passe incorrect."
+        return render(request, 'user/loginprof.html', {"error_message": error_message})
     return render(request, 'users/loginprof.html')
 
 @transaction.atomic
