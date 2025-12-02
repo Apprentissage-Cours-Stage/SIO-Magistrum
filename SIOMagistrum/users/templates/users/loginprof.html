@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIO Magistrum - Inscription/Connexion Eleve</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/CSS/inscriptionprof.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/header.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
+</head>
+
+<body>
+    {% include 'partials/header.html' %}
+    <div class="auth-wrapper">
+    <!-- Connexion -->
+        <div class="auth-card">
+            <h2>Connexion</h2>
+            <p>Connectez-vous à votre compte</p>
+
+            <form action="{% url 'login_prof' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" name="password" placeholder="Votre mot de passe"
+                        required>
+                </div>
+                <button type="submit" class="auth-btn">Se connecter</button>
+            </form>
+            <p class="auth-switch">
+                <a href="{% url 'inscription_prof' %}">Pas encore de compte ? Inscrivez-vous</a>
+            </p>
+        </div>
+    </div>
+    {% include 'partials/footer.html' %}
+</body>
+</html>

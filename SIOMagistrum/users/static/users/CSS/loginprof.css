@@ -1,0 +1,216 @@
+:root {
+    --primary: #1f738a;
+    --secondary: #f0f8fa;
+    --accent: #e4b44c;
+    --text-dark: #1f1f1f;
+    --bg-card: #ffffff;
+    --btn-color: #2c3e50;
+    --btn-hover: #1a252f;
+}
+
+/* Structure Générale */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary);
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.auth-section {
+    display: flex;
+    justify-content: center;   /* centre horizontalement */
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    background-color: #f0f8fa;
+}
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f8fa;
+    padding: 20px;
+}
+
+/* --- Carte Connexion / Inscription --- */
+.auth-card {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.auth-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.auth-card h2 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.auth-card p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+    opacity: 0.85;
+}
+
+/* --- Form Groups --- */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input {
+    width: 100%;
+    max-width: 370px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: var(--input-bg);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#tags-container {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #102b6a;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    gap: 8px;
+}
+
+.tag button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.tag button:hover {
+    opacity: 0.7;
+}
+ 
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(31,115,138,0.3);
+    outline: none;
+}
+
+/* --- Erreurs --- */
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+/* --- Boutons --- */
+.auth-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 0;
+    background-color: var(--primary);
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.auth-btn:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* --- Lien switch --- */
+.auth-switch {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.auth-switch a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-switch a:hover {
+    color: var(--accent);
+}
+
+.select-multiple {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 15px;
+    min-height: 120px;
+}
+.select-multiple option {
+    padding: 4px 6px;
+}
+.select-multiple:focus {
+    border-color: #222;
+    outline: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .auth-section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* --- Optionnel : input focus léger animation --- */
+.form-group input:focus {
+    animation: focusAnim 0.25s;
+}
+
+@keyframes focusAnim {
+    0% { box-shadow: 0 0 0 rgba(31,115,138,0); }
+    100% { box-shadow: 0 0 8px rgba(31,115,138,0.3); }
+}
