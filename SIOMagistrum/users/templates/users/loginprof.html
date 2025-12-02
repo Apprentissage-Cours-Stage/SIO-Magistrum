@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>SIO Magistrum - Inscription/Connexion Eleve</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'users/logineleve.css' %}">
+    <link rel="stylesheet" href="{% static 'users/CSS/loginprof.css' %}">
     <link rel="stylesheet" href="{% static 'partials/header.css' %}">
     <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
 </head>
@@ -73,11 +73,9 @@
                         placeholder="Confirmez le mot de passe" required>
                 </div>
                 <div class="form-group">
-                    <label>Matières enseignées</label>
-                    <!-- Champ Django correctement rendu -->
+                    <label for="matières">Matières enseignées</label>
                     {{ form.matieres }}
-                    <!-- Zone d’affichage -->
-                    <div id="zone-affichage" class="zone-vide"></div>
+                    <div id="tags-container"></div>
                 </div>
                 <button type="submit" class="auth-btn">S'inscrire</button>
             </form>
@@ -87,6 +85,7 @@
         </div>
     </section>
     {% include 'partials/footer.html' %}
+<script src="{% static 'users/JAVASCRIPT/loginprof.js' %}"></script>
 </body>
 
 </html>
