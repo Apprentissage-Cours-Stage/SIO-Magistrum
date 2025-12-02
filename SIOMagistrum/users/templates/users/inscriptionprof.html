@@ -61,19 +61,10 @@
                 <button type="submit" class="auth-btn">S'inscrire</button>
             </form>
             <p class="auth-switch">
-                <a href="#login">Déjà inscrit ? Connectez-vous</a>
+                <a href="{% url 'login_prof' %}">Déjà inscrit ? Connectez-vous</a>
             </p>
         </div>
     </div>
-    {% if form.errors %}
-    <ul>
-        {% for field, errors in form.errors.items %}
-        <li>{{ field }} : {{ errors|join:", " }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
     {% include 'partials/footer.html' %}
-    <script src="{% static 'users/JAVASCRIPT/inscriptionprof.js' %}"></script>
 </body>
-
 </html>
