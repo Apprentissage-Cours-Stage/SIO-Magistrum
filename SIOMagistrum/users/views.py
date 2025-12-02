@@ -18,6 +18,7 @@ def inscription_prof(request):
         if form.is_valid():
             # Création du User
             user = User.objects.create_user(
+                username=form.cleaned_data['pseudo'],
                 email=form.cleaned_data.get('email',''),
                 password=form.cleaned_data['password']
             )
@@ -31,4 +32,5 @@ def inscription_prof(request):
             return redirect('prof_login')
     else:
         form = InscriptionProfForm()
+        print(form.errors)
     return render(request, 'users/inscriptionprof.html', {'form': form})

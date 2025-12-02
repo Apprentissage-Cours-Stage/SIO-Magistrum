@@ -52,8 +52,11 @@
                 </div>
                 <div class="form-group">
                     <label for="matières">Matières enseignées</label>
-                    {{ form.matieres }}
-                    <div id="tags-container"></div>
+                    <select name="matieres" id="matieres" multiple required>
+                        {% for matiere in form.fields.matieres.queryset %}
+                        <option value="{{ matiere.id }}">{{ matiere.nom }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <button type="submit" class="auth-btn">S'inscrire</button>
             </form>
@@ -62,6 +65,13 @@
             </p>
         </div>
     </div>
+    {% if form.errors %}
+    <ul>
+        {% for field, errors in form.errors.items %}
+        <li>{{ field }} : {{ errors|join:", " }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% include 'partials/footer.html' %}
     <script src="{% static 'users/JAVASCRIPT/inscriptionprof.js' %}"></script>
 </body>
