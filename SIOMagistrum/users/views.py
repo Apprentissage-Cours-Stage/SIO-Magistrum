@@ -8,6 +8,9 @@ from .models import Professeur
 def eleve_login(request):
     return render(request, 'users/logineleve.html')
 
+def prof_login(request):
+    return render(request, 'users/loginprof.html')
+
 @transaction.atomic
 def inscription_prof(request):
     if request.method == 'POST':
