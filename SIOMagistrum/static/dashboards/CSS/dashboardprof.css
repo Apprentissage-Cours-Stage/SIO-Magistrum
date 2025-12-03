@@ -1,0 +1,17 @@
+:root {
+    --primary: #1f738a;
+    --secondary: #f0f8fa;
+    --accent: #e4b44c;
+    --text-dark: #1f1f1f;
+    --bg-card: #ffffff;
+    --btn-color: #2c3e50;
+    --btn-hover: #1a252f;
+}
+
+/* Structure Générale */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary);
+    margin: 0;
+    color: var(--text-dark);
+}
