@@ -54,7 +54,11 @@
                     <label for="matières">Matières enseignées</label>
                     <select name="matieres" id="matieres" multiple required>
                         {% for matiere in form.fields.matieres.queryset %}
-                        <option value="{{ matiere.id }}">{{ matiere.nom }}</option>
+                        <option value="{{ matiere.id }}">{{ matiere.nom }}
+                            {% if matiere.option %}
+                               - ({{ matiere.annee_scolaire.nom }})
+                            {% endif %}
+                        </option>
                         {% endfor %}
                     </select>
                 </div>
