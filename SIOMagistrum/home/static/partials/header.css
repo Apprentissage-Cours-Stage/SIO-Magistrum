@@ -154,13 +154,20 @@ header .logo:hover {
     color: #333;
 }
 
-.logout-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    transition: transform 0.2s;
+.logout-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
 }
 
-.logout-link:hover .logout-icon {
-    transform: scale(1.1);
+.logout-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.logout-icon {
+    width: 24px;   /* ajustez selon votre design */
+    height: auto;
 }

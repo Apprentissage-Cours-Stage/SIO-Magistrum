@@ -36,34 +36,36 @@
                     {% endif %}
                  {% else %}
                     {% static 'home/ASSETS/ACCOUNT.svg' %}
-                 {% endif %}"  
-                    alt="Compte" class="svg-icon">
+                 {% endif %}" alt="Compte" class="svg-icon">
             </div>
             <div class="login-info">
                 {% if request.user.is_authenticated %}
-                    <h3 class="login-name">
-                        {% if request.user.eleve %}
-                            {{ request.user.eleve.pseudo}}
-                        {% elif request.user.professeur %}
-                            {{request.user.professeur.pseudo}}
-                        {% endif %}
-                    </h3>
-                    <p class="login-role">
-                        {% if request.user.eleve %}
-                            Élève
-                        {% elif request.user.professeur %}
-                            Professeur
-                        {% endif %}
-                    </p>
+                <h3 class="login-name">
+                    {% if request.user.eleve %}
+                        {{ request.user.eleve.pseudo}}
+                    {% elif request.user.professeur %}
+                        {{request.user.professeur.pseudo}}
+                    {% endif %}
+                </h3>
+                <p class="login-role">
+                    {% if request.user.eleve %}
+                        Élève
+                    {% elif request.user.professeur %}
+                        Professeur
+                    {% endif %}
+                </p>
                 {% else %}
                     <h3 class="login-name">Non connecté</h3>
                     <p class="login-role">Veuillez vous connecter</p>
                 {% endif %}
             </div>
             {% if request.user.is_authenticated %}
-                <a href="#" class="logout-link" title="Se déconnecter">
-                    <img src="{% static 'home/ASSETS/LOGOUT.png' %}" alt="Déconnexion" class="logout-icon"></a>
-                </a>
+            <form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="logout-link" title="Se déconnecter">
+                    <img src="{% static 'home/ASSETS/LOGOUT.png' %}" alt="Déconnexion" class="logout-icon">
+                </button>
+            </form>
             {% endif %}
         </section>
     </nav>
