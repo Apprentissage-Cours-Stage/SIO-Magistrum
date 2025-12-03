@@ -11,6 +11,12 @@
 </head>
 <body>
     {% include 'partials/header.html' %}
+    <main>
+        <h1 class="title">
+            Bievenue M. {{request.user.professeur.nom}} sur le dashboard Professeur
+        </h1>
+
+    </main>
     {% include 'partials/footer.html' %}
 </body>
 </html>
