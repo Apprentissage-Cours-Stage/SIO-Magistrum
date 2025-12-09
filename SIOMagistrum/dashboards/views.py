@@ -16,6 +16,8 @@ def dashboard_prof(request):
                 cours.professeur = request.user.professeur
                 cours.save()
                 return redirect('dashboard_prof')
+            else:
+                print(form.errors)
     else:
         form = CoursForm()
     matieres = professeur.matieres.all()
