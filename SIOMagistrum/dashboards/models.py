@@ -8,6 +8,7 @@ class Cours(models.Model):
     ]
     titre = models.CharField(max_length=150)
     banniere = models.ImageField(upload_to='banniere_cours/', blank=True, null=True)
+    icon = models.ImageField(upload_to='icon_cours/', blank=True, null=True)
     matiere = models.ForeignKey(Matiere, on_delete=models.CASCADE, related_name='cours')
     professeur = models.ForeignKey(Professeur, on_delete=models.CASCADE, related_name='cours')
     type_cours = models.CharField(max_length=20, choices=TYPE_CHOICES, default='Standard')
