@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>SIO Magistrum - Dashboard Professeur</title>
@@ -15,8 +14,8 @@
         <h1 class="title">
             Bienvenue M. {{request.user.professeur.nom}} sur le dashboard
         </h1>
-        <sections class="Cours">
-            <h2>Mes cours</h2>
+        <section class="Cours">
+            <h1 class="section-title">Mes cours :</h1>
             {% if cours %}
                 <div class="liste-cours">
                     {% for c in cours %}
@@ -31,10 +30,45 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <p>Vous n'avez pas encore crée de cours.</p>
+                <div class="cours-vide">
+                    <p>Vous n'avez pas encore crée de cours.</p>
+                    <button id="openModal" class="btn-cours">Ajoutez votre premier cours</button>
+                </div>
             {% endif %}
-        </sections>
+        </section>
     </main>
     {% include 'partials/footer.html' %}
+    <div id="modalCours" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Créer un nouveau cours</h2>
+            <form method="POST" action="{% url 'dashboard_prof' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="icon">Icône :</label>
+                <input type="file" name="icon" id="icon" accept="image/*" required>
+
+                <label for="banniere">Bannière :</label>
+                <input type="file" name="banniere" id="banniere" accept="image/*" required>
+
+                <label for="titre">Titre du cours :</label>
+                <input type="text" name="titre" id="titre" required>
+
+                <label for="matiere">Matière :</label>
+                <select name="matiere" id="matiere" required>
+                    {% for m in matieres %}
+                        <option value="{{m.id}}">{{m.nom}} - {{m.annee_scolaire}}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="type_cours">Type de cours :</label>
+                <select name="type_cours" id="type_cours" required>
+                    <option value="Standard">Standard</option>
+                    <option value="Parcours">Parcours de positionnement</option>
+                </select>
+                <button type="submit" name="cours-submit" class="btn-cours">Créer le cours</button>
+            </form>
+        </div>
+    </div>
 </body>
+<script src="{% static 'dashboards/JAVASCRIPT/dashboardprof.js' %}"></script>
 </html>
