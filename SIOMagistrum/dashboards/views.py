@@ -1,11 +1,22 @@
 from django.shortcuts import render, redirect
 from dashboards.models import Cours
+from users.models import Professeur
+from .forms import CoursForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def dashboard_prof(request):
-    if not request.user.is_authenticated:
-        return redirect("prof_login")
     professeur = request.user.professeur
-    cours = Cours.objects.filter(professeur=professeur)
-    return render(request, 'dashboards/profs/dashboardprof.html', {'cours': cours})
+    liste_cours = Cours.objects.filter(professeur=professeur)
+    if request.method == 'POST':
+        if 'cours-submit' in request.POST:
+            form = CoursForm(request.POST, request.FILES)
+            if form.is_valid():
+                cours = form.save(commit=False)
+                cours.professeur = request.user.professeur
+                cours.save()
+                return redirect('dashboard_prof')
+    else:
+        form = CoursForm()
+    matieres = professeur.matieres.all()
+    return render(request, 'dashboards/profs/dashboardprof.html', {'cours': liste_cours, 'form': form, 'matieres': matieres})
