@@ -20,12 +20,20 @@
                 <div class="liste-cours">
                     {% for c in cours %}
                         <div class="carte-cours">
-                            <img src="{{c.banniere}}">
-                            <img src="{{c.icon}}">
-                            <h3>{{c.titre}}</h3>
-                            <p>Matière : {{c.matiere.nom}}</p>
-                            <p>Type : {{c.get_type_cours_display}}</p>
-                            <p>Crée le : {{c.date_creation|date:"d/m/Y"}}</p>
+                            <div class="carte-banniere">
+                                <img src="{{c.banniere|default:'/static/dashboards/ASSETS/BANNERPLACEHOLDER.png'}}">
+                            </div>
+                            <div class="carte-body">
+                                <div class="carte-icon">
+                                    <img src="{{ c.icon|default:'/static/dashboards/ASSETS/ICONPLACEHOLDER.png' }}" alt="Icône">
+                                </div>
+                                <div class="carte-info">
+                                <h3>{{c.titre}}</h3>
+                                    <p>Matière : {{c.matiere.nom}}</p>
+                                    <p>Type : {{c.get_type_cours_display}}</p>
+                                    <p>Crée le : {{c.date_creation|date:"d/m/Y"}}</p>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -45,10 +53,10 @@
             <form method="POST" action="{% url 'dashboard_prof' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="icon">Icône :</label>
-                <input type="file" name="icon" id="icon" accept="image/*" required>
+                <input type="file" name="icon" id="icon" accept="image/*">
 
                 <label for="banniere">Bannière :</label>
-                <input type="file" name="banniere" id="banniere" accept="image/*" required>
+                <input type="file" name="banniere" id="banniere" accept="image/*">
 
                 <label for="titre">Titre du cours :</label>
                 <input type="text" name="titre" id="titre" required>
@@ -63,7 +71,7 @@
                 <label for="type_cours">Type de cours :</label>
                 <select name="type_cours" id="type_cours" required>
                     <option value="Standard">Standard</option>
-                    <option value="Parcours">Parcours de positionnement</option>
+                    <option value="Positionnement">Parcours de positionnement</option>
                 </select>
                 <button type="submit" name="cours-submit" class="btn-cours">Créer le cours</button>
             </form>
