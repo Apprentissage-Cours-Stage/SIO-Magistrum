@@ -21,7 +21,7 @@ def prof_login(request):
             user = authenticate(request, username=user.username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('dashboard:dashboard_prof')
+                return redirect('dashboard_prof')
         error_message = "Email ou mot de passe incorrect."
         return render(request, 'user/loginprof.html', {"error_message": error_message})
     return render(request, 'users/loginprof.html')
