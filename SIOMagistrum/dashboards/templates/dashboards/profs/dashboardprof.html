@@ -15,7 +15,25 @@
         <h1 class="title">
             Bienvenue M. {{request.user.professeur.nom}} sur le dashboard
         </h1>
-
+        <sections class="Cours">
+            <h2>Mes cours</h2>
+            {% if cours %}
+                <div class="liste-cours">
+                    {% for c in cours %}
+                        <div class="carte-cours">
+                            <img src="{{c.banniere}}">
+                            <img src="{{c.icon}}">
+                            <h3>{{c.titre}}</h3>
+                            <p>Matière : {{c.matiere.nom}}</p>
+                            <p>Type : {{c.get_type_cours_display}}</p>
+                            <p>Crée le : {{c.date_creation|date:"d/m/Y"}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Vous n'avez pas encore crée de cours.</p>
+            {% endif %}
+        </sections>
     </main>
     {% include 'partials/footer.html' %}
 </body>
