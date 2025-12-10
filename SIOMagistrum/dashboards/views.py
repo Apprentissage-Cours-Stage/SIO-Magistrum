@@ -38,3 +38,13 @@ def modify_cours(request, pk):
         cours.save()
         return redirect('dashboard_prof')
     return redirect('dashboard_prof')
+
+@login_required
+def cours_detail(request, pk):
+    professeur = request.user.professeur
+    cours = get_object_or_404(Cours, pk=pk, professeur=professeur)
+    modules = cours.modules.order_by('ordre')
+    return render(request, 'dashboards/profs/cours/cours_detail.html', {
+        'cours': cours,
+        'modules': modules
+    })
