@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         modalAjout.querySelector('form').reset();
     });
 
+    document.getElementById('addCours').addEventListener('click', () => {
+        document.getElementById('modalAjoutCours').style.display = 'block';
+    });
 
     /* ----------------------------- */
     /*  MODAL DE MODIFICATION        */

@@ -47,13 +47,31 @@ main {
 }
 
 /* Sous‐titre */
-.Cours .section-title {
-    text-align: center;
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
     font-weight: bold;
-    text-align: left;
-    color: var(--primary);
-    margin-bottom: 25px;
-    font-size: 2rem;
+}
+
+.btn-add {
+    font-size: 1.5rem;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--btn-color); /* ou couleur de votre palette */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: var(--btn-hover); /* variante au survol */
 }
 
 /* Conteneur des cartes */
@@ -207,7 +225,7 @@ main {
 
 .btn-modify {
     position: absolute;
-    background-color: var(--primary);
+    background-color: var(--btn-color);
     top: 8px;
     right: 8px;
     width: 24px;

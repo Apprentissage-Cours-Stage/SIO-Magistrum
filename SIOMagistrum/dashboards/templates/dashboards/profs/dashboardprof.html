@@ -15,7 +15,12 @@
             Bienvenue M. {{request.user.professeur.nom}} sur le dashboard
         </h1>
         <section class="Cours">
-            <h1 class="section-title">Mes cours :</h1>
+            <div class="section-header">
+                <h1 class="section-title">Mes cours :</h1>
+                {% if cours %}
+                    <button id="addCours" class="btn-add">+</button>
+                {% endif %}
+            </div>
             {% if cours %}
                 <div class="liste-cours">
                     {% for c in cours %}
