@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from dashboards.models import Cours
-from users.models import Professeur
-from .forms import CoursForm
+from .forms import CoursForm, ModuleForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -44,6 +43,16 @@ def cours_detail(request, pk):
     professeur = request.user.professeur
     cours = get_object_or_404(Cours, pk=pk, professeur=professeur)
     modules = cours.modules.order_by('ordre')
+    if request.method == 'POST':
+        if 'module-submit' in request.POST:
+            form = ModuleForm(request.POST)
+            if form.is_valid():
+                module = form.save(commit=False)
+                module.cours = cours
+                module.save()
+                return redirect('cours_detail', pk=cours.pk)
+        else:
+            form = ModuleForm()
     return render(request, 'dashboards/profs/cours/cours_detail.html', {
         'cours': cours,
         'modules': modules
