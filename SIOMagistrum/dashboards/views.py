@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from dashboards.models import Cours
 from users.models import Professeur
 from .forms import CoursForm
@@ -22,3 +22,19 @@ def dashboard_prof(request):
         form = CoursForm()
     matieres = professeur.matieres.all()
     return render(request, 'dashboards/profs/dashboardprof.html', {'cours': liste_cours, 'form': form, 'matieres': matieres})
+
+@login_required
+def modify_cours(request, pk):
+    professeur = request.user.professeur
+    cours = get_object_or_404(Cours, pk=pk, professeur=professeur)
+    if request.method == 'POST':
+        cours.titre = request.POST.get('titre')
+        cours.matiere_id = request.POST.get('matiere')
+        cours.type_cours = request.POST.get('type_cours')
+        if 'icon' in request.FILES:
+            cours.icon = request.FILES['icon']
+        if 'banniere' in request.FILES:
+            cours.banniere = request.FILES['banniere']
+        cours.save()
+        return redirect('dashboard_prof')
+    return redirect('dashboard_prof')
