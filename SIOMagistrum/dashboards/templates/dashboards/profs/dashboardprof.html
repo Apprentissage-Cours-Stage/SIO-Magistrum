@@ -19,7 +19,7 @@
             {% if cours %}
                 <div class="liste-cours">
                     {% for c in cours %}
-                        <div class="carte-cours">
+                        <div class="carte-cours" data-href="{% url 'cours_detail' c.id %}">
                             <div class="carte-banniere">
                                 <img src="{% if c.banniere %}{{ c.banniere.url }}{% else %}/static/dashboards/ASSETS/BANNERPLACEHOLDER.png{% endif %}">
                             </div>

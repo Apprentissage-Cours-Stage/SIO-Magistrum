@@ -207,6 +207,7 @@ main {
 
 .btn-modify {
     position: absolute;
+    background-color: var(--primary);
     top: 8px;
     right: 8px;
     width: 24px;
