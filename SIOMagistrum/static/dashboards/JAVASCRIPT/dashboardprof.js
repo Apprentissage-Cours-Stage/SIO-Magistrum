@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ----------------------------- */
+    /*  REDIRECTION VERS DETAILS     */
+    /* ----------------------------- */
+    document.querySelectorAll('.carte-cours').forEach(card => {
+        card.addEventListener('click', e => {
+            if (!e.target.closest('.btn-modify')) { // ignore si on clique sur le bouton
+                const url = card.dataset.href;
+                if (url) window.location.href = url;
+            }
+        });
+    });
+
+    /* ----------------------------- */
     /*  MODAL D’AJOUT DE COURS       */
     /* ----------------------------- */
 
