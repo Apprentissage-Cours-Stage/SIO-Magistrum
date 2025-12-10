@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>SIO Magistrum - Dashboard Professeur</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboards/CSS/cours/cours_details.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/header.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+    <main>
+        <section class="cours-details">
+            <div class="cours-banner">
+                <img src="{% if cours.banniere %}{{ cours.banniere.url }}{% else %}/static/dashboards/ASSETS/BANNERPLACEHOLDER.png{% endif %}" alt="Bannière du cours">
+            </div>
+            <div class="cours-info">
+                <img src="{% if cours.icon %}{{ cours.icon.url }}{% else %}/static/dashboards/ASSETS/ICONPLACEHOLDER.png{% endif %}" alt="Icône">
+                <h1>{{cours.titre}}</h1>
+                <p><strong>Matière :</strong> {{ cours.matiere.nom }}</p>
+                <p><strong>Type :</strong> {{ cours.get_type_cours_display }}</p>
+                <p><strong>Crée le :</strong> {{cours.date_creation|date:"d/m/Y"}}</p>
+            </div>
+            <div class="section-modules">
+                <div class="section-header">
+                    <h2>Modules :</h2>
+                    <button id="addModule" class="btn-add">+</button>
+                </div>
+                {% if modules %}
+                <div class="liste-modules">
+                    {% for m in modules %}
+                        <div class="carte-module">
+                            <h3>{{m.ordre}}. {{m.titre}}</h3>
+                            {% if m.description %}
+                                <p>{{m.description}}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    <p>Ce cours n'as pas encore de modules.</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+    {% include 'partials/footer.html' %}
+    <!-- Modal création module -->
+    <div id="modalModule" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Créer un module</h2>
+            <form method="POST" action="#">
+                {% csrf_token %}
+                <label for="titre_module">Titre :</label>
+                <input type="text" id="titre_module" name="titre" required>
+
+                <label for="description_module">Description :</label>
+                <textarea id="description_module" name="description"></textarea>
+
+                <label for="ordre_module">Ordre :</label>
+                <input type="number" id="ordre_module" name="ordre" value="1" min="1">
+
+                <button type="submit" name="module-submit" class="btn-cours">Créer</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static 'dashboards/JAVASCRIPT/cours/cours_details.js' %}"></script>
+</html>
