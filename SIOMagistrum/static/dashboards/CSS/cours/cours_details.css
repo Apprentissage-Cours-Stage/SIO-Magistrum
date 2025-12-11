@@ -109,6 +109,7 @@ main {
 }
 
 .carte-module {
+    position: relative;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -229,6 +230,62 @@ main {
 
 .modal-content .btn-cours:hover {
     background-color: var(--btn-hover); /* teinte plus foncée de l'accent */
+}
+
+.carte-actions {
+    position: absolute;
+    overflow: visible;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+/* Bouton modifier (déjà existant) */
+.btn-modify {
+    background-color: var(--btn-color);
+    width: 22px;
+    height: 22px;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-modify img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Bouton supprimer */
+.btn-delete {
+    background-color: #b93131;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #8a2424;
+}
+
+.btn-delete img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Position du formulaire de suppression */
+.form-supprimer {
+    margin: 0;
+    padding: 0;
 }
 
 /* Animation apparition */
