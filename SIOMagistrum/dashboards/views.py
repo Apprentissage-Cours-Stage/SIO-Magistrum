@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from dashboards.models import Cours
+from dashboards.models import Cours, Module
 from .forms import CoursForm, ModuleForm
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 
 @login_required
 def dashboard_prof(request):
@@ -66,3 +67,22 @@ def cours_detail(request, pk):
         'cours': cours,
         'modules': modules
     })
+
+@login_required
+def modify_module(request, pk):
+    module = get_object_or_404(Module, id=pk)
+    if request.method == 'POST':
+        module.titre = request.POST.get("titre")
+        module.description = request.POST.get("description")
+        module.ordre = request.POST.get('ordre')
+        module.save()
+        return redirect('cours_detail', pk=module.cours.pk)
+    return redirect('cours_detail', pk=module.cours.pk)
+
+@login_required
+def delete_module(request, pk):
+    module = get_object_or_404(Module, id=pk)
+    if request.method == "POST":
+        module.delete()
+        return redirect('cours_detail', pk=module.cours.pk)
+    return redirect('cours_detail', pk=module.cours.pk)
