@@ -39,6 +39,15 @@ def modify_cours(request, pk):
     return redirect('dashboard_prof')
 
 @login_required
+def delete_cours(request, pk):
+    professeur = request.user.professeur
+    cours = get_object_or_404(Cours, pk=pk, professeur=professeur)
+    if request.method == 'POST':
+        cours.delete()
+        return redirect('dashboard_prof')
+    return redirect('dashboard_prof')
+
+@login_required
 def cours_detail(request, pk):
     professeur = request.user.professeur
     cours = get_object_or_404(Cours, pk=pk, professeur=professeur)
