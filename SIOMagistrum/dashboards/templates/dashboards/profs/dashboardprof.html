@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>SIO Magistrum - Dashboard Professeur</title>
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'partials/header.css' %}">
     <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
 </head>
+
 <body>
     {% include 'partials/header.html' %}
     <main>
@@ -18,53 +20,53 @@
             <div class="section-header">
                 <h1 class="section-title">Mes cours :</h1>
                 {% if cours %}
-                    <button id="addCours" class="btn-add">+</button>
+                <button id="addCours" class="btn-add">+</button>
                 {% endif %}
             </div>
             {% if cours %}
-                <div class="liste-cours">
-                    {% for c in cours %}
-                        <div class="carte-cours" data-href="{% url 'cours_detail' c.id %}">
-                            <div class="carte-banniere">
-                                <img src="{% if c.banniere %}{{ c.banniere.url }}{% else %}/static/dashboards/ASSETS/BANNERPLACEHOLDER.png{% endif %}">
-                            </div>
-                            <div class="carte-body">
-                                <div class="carte-icon">
-                                    <img src="{% if c.icon %}{{ c.icon.url }}{% else %}/static/dashboards/ASSETS/ICONPLACEHOLDER.png{% endif %}" alt="Icône">
-                                </div>
-                                <div class="carte-info">
-                                <h3>{{c.titre}}</h3>
-                                    <p>Matière : {{c.matiere.nom}}</p>
-                                    <p>Type : {{c.get_type_cours_display}}</p>
-                                    <p>Crée le : {{c.date_creation|date:"d/m/Y"}}</p>
-                                </div>
-                            </div>
-                            <a href="#"
-                            class="btn-modify" 
-                            data-id="{{c.id}}"
-                            data-titre="{{c.titre}}"
-                            data-matiere="{{c.matiere.id}}"
-                            data-type="{{c.type_cours}}"
-                            {% if c.banniere %}
-                                data-banniere="{{ c.banniere.url }}"
-                            {% else %}
-                                data-banniere=""
-                            {% endif %}
-                            {% if c.icon %}
-                                data-icon="{{ c.icon.url }}"
-                            {% else %}
-                                data-icon=""
-                            {% endif %}">
-                                <img src="{% static 'dashboards/ASSETS/MODIFY.png' %}" alt="Modifier">
-                            </a>
+            <div class="liste-cours">
+                {% for c in cours %}
+                <div class="carte-cours" data-href="{% url 'cours_detail' c.id %}">
+                    <div class="carte-actions">
+                        <!-- Bouton modifier -->
+                        <a href="#" class="btn-modify" data-id="{{c.id}}" data-titre="{{c.titre}}"
+                            data-matiere="{{c.matiere.id}}" data-type="{{c.type_cours}}" {% if c.banniere %}
+                            data-banniere="{{ c.banniere.url }}" {% else %} data-banniere="" {% endif %} {% if c.icon %}
+                            data-icon="{{ c.icon.url }}" {% else %} data-icon="" {% endif %}>
+                            <img src="{% static 'dashboards/ASSETS/MODIFY.png' %}" alt="Modifier">
+                        </a>
+                        <!-- Formulaire suppression -->
+                        <form method="post" action="{% url 'delete_cours' c.id %}" onClick="event.stopPropagation();"
+                            class="form-supprimer">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete">
+                                <img src="{% static 'dashboards/ASSETS/DELETE.png' %}" alt="Supprimer">
+                            </button>
+                        </form>
+                    </div>
+                    <div class="carte-banniere">
+                        <img
+                            src="{% if c.banniere %}{{ c.banniere.url }}{% else %}/static/dashboards/ASSETS/BANNERPLACEHOLDER.png{% endif %}">
+                    </div>
+                    <div class="carte-body">
+                        <div class="carte-icon">
+                            <img src="{% if c.icon %}{{ c.icon.url }}{% else %}/static/dashboards/ASSETS/ICONPLACEHOLDER.png{% endif %}"
+                                alt="Icône">
                         </div>
-                    {% endfor %}
+                        <div class="carte-info">
+                            <h3>{{c.titre}}</h3>
+                            <p>Matière : {{c.matiere.nom}}</p>
+                            <p>Type : {{c.get_type_cours_display}}</p>
+                            <p>Crée le : {{c.date_creation|date:"d/m/Y"}}</p>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             {% else %}
-                <div class="cours-vide">
-                    <p>Vous n'avez pas encore crée de cours.</p>
-                    <button id="openModal" class="btn-cours">Ajoutez votre premier cours</button>
-                </div>
+            <div class="cours-vide">
+                <p>Vous n'avez pas encore crée de cours.</p>
+                <button id="openModal" class="btn-cours">Ajoutez votre premier cours</button>
+            </div>
             {% endif %}
         </section>
     </main>
@@ -87,7 +89,7 @@
                 <label for="matiere">Matière :</label>
                 <select name="matiere" id="matiere" required>
                     {% for m in matieres %}
-                        <option value="{{m.id}}">{{m.nom}} - {{m.annee_scolaire}}</option>
+                    <option value="{{m.id}}">{{m.nom}} - {{m.annee_scolaire}}</option>
                     {% endfor %}
                 </select>
 
@@ -101,50 +103,51 @@
         </div>
     </div>
     <div id="modalEditCours" class="modal">
-    <div class="modal-content">
-        <span class="close close-edit">&times;</span>
+        <div class="modal-content">
+            <span class="close close-edit">&times;</span>
 
-        <h2>Modifier le cours</h2>
+            <h2>Modifier le cours</h2>
 
-        <form method="POST" action="{% url 'dashboard_prof' %}" enctype="multipart/form-data">
-            {% csrf_token %}
+            <form method="POST" action="{% url 'dashboard_prof' %}" enctype="multipart/form-data">
+                {% csrf_token %}
 
-            <!-- Identifiant caché -->
-            <input type="hidden" name="cours_id" id="edit_cours_id">
+                <!-- Identifiant caché -->
+                <input type="hidden" name="cours_id" id="edit_cours_id">
 
-            <label for="edit_icon">Icône :</label>
-            <input type="file" name="icon" id="edit_icon" accept="image/*">
+                <label for="edit_icon">Icône :</label>
+                <input type="file" name="icon" id="edit_icon" accept="image/*">
 
-            <label>Icône actuelle :</label>
-            <img id="edit_icon_preview" class="preview-img" src="" alt="Icône actuelle">
+                <label>Icône actuelle :</label>
+                <img id="edit_icon_preview" class="preview-img" src="" alt="Icône actuelle">
 
-            <label for="edit_banniere">Bannière :</label>
-            <input type="file" name="banniere" id="edit_banniere" accept="image/*">
+                <label for="edit_banniere">Bannière :</label>
+                <input type="file" name="banniere" id="edit_banniere" accept="image/*">
 
-            <label>Bannière actuelle :</label>
-            <img id="edit_banniere_preview" class="preview-img" src="" alt="Bannière actuelle">
+                <label>Bannière actuelle :</label>
+                <img id="edit_banniere_preview" class="preview-img" src="" alt="Bannière actuelle">
 
-            <label for="edit_titre">Titre du cours :</label>
-            <input type="text" name="titre" id="edit_titre" required>
+                <label for="edit_titre">Titre du cours :</label>
+                <input type="text" name="titre" id="edit_titre" required>
 
-            <label for="edit_matiere">Matière :</label>
-            <select name="matiere" id="edit_matiere" required>
-                {% for m in matieres %}
+                <label for="edit_matiere">Matière :</label>
+                <select name="matiere" id="edit_matiere" required>
+                    {% for m in matieres %}
                     <option value="{{ m.id }}">{{ m.nom }} - {{ m.annee_scolaire }}</option>
-                {% endfor %}
-            </select>
+                    {% endfor %}
+                </select>
 
-            <label for="edit_type_cours">Type de cours :</label>
-            <select name="type_cours" id="edit_type_cours" required>
-                <option value="Standard">Standard</option>
-                <option value="Positionnement">Parcours de positionnement</option>
-            </select>
+                <label for="edit_type_cours">Type de cours :</label>
+                <select name="type_cours" id="edit_type_cours" required>
+                    <option value="Standard">Standard</option>
+                    <option value="Positionnement">Parcours de positionnement</option>
+                </select>
 
-            <button type="submit" name="cours-edit-submit" class="btn-cours">Modifier</button>
-        </form>
+                <button type="submit" name="cours-edit-submit" class="btn-cours">Modifier</button>
+            </form>
 
+        </div>
     </div>
-</div>
 </body>
 <script src="{% static 'dashboards/JAVASCRIPT/dashboardprof.js' %}"></script>
+
 </html>
