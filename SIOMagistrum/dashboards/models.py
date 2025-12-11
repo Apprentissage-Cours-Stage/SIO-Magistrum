@@ -23,6 +23,14 @@ class Module(models.Model):
     cours = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name='modules')
     description = models.TextField(blank=True, null=True)
     ordre = models.PositiveIntegerField(default=1)
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['cours','ordre'],
+                name="unique_ordre_par_cours"
+            )
+        ]
+        ordering = ['ordre']
 
     def __str__(self):
         return f"{self.titre} ({self.cours.titre})"
