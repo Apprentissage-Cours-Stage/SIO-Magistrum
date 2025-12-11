@@ -1,0 +1,43 @@
+services:
+  # ------------------------------------------------------
+  # Runners : Execution du code fournie par l'utilisateur
+  # ------------------------------------------------------
+  runner-python:
+    build:
+      context: ./runners/python
+      dockerfile: Dockerfile
+    image: runner-python
+    container_name: runner-python
+    network_mode: none
+  
+  runner-php:
+    build:
+      context: ./runners/php
+      dockerfile: Dockerfile
+    image: runner-php
+    container_name: runner-php
+    network_mode: none
+  
+  runner-java:
+    build:
+      context: ./runners/java
+      dockerfile: Dockerfile
+    image: runner-java
+    container_name: runner-java
+    network_mode: none
+  
+  runner-htmlcss:
+    build:
+      context: ./runners/html_css
+      dockerfile: Dockerfile
+    image: runner-htmlcss
+    container_name: runner-htmlcss
+    network_mode: none
+  
+  runner-javascript:
+    build:
+      context: ./runners/javascript
+      dockerfile: Dockerfile
+    image: runner-javascript
+    container_name: runner-javascript
+    network_mode: none
