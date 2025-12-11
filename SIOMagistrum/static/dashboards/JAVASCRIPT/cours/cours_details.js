@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btnAddModule.addEventListener('click', () => {
         modalAjoutModule.style.display = 'flex';
         modalAjoutModule.querySelector('form').reset();
-        modalAjoutModule.querySelector('form').action =
-            `/dashboard/professeur/module/add/${modalAjoutModule.dataset.cours}/`;
     });
 
     closeAddBtn.addEventListener('click', () => {
@@ -45,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             editOrdre.value = btn.dataset.ordre;
 
             const moduleId = btn.dataset.id;
-            editForm.action = `/dashboard/professeur/module/modify/${moduleId}/`;
+            editForm.action = `/dashboard/professeur/cours/module/modify/${moduleId}/`;
 
             modalEditModule.style.display = 'flex';
         });

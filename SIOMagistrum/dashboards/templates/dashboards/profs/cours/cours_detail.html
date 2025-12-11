@@ -45,7 +45,7 @@
                                 </a>
 
                                 <!-- Bouton supprimer -->
-                                <form method="post" action="#"
+                                <form method="post" action="{% url 'delete_module' m.id %}"
                                     class="form-supprimer" onClick="event.stopPropagation();">
                                     {% csrf_token %}
                                     <button type="submit" class="btn-delete">
@@ -72,7 +72,7 @@
         <div class="modal-content">
             <span class="close close-add">&times;</span>
             <h2>Créer un module</h2>
-            <form method="POST" action="#">
+            <form method="POST" action="{% url 'cours_detail' cours.id %}">
                 {% csrf_token %}
                 <label for="titre_module">Titre :</label>
                 <input type="text" id="titre_module" name="titre" required>
@@ -91,7 +91,7 @@
         <div class="modal-content">
             <span class="close close-edit">&times;</span>
             <h2>Modifier un module</h2>
-            <form method="POST" action="#">
+            <form method="POST" action="">
                 {% csrf_token %}
                 <label for="edit_titre_module">Titre :</label>
                 <input type="text" id="edit_titre_module" name="titre" required>
