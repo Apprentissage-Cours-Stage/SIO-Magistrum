@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  code-executor-api:
+    build: ./api
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./temp:/app/temp
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
