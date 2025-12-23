@@ -23,6 +23,11 @@ class Module(models.Model):
     cours = models.ForeignKey(Cours, on_delete=models.CASCADE, related_name='modules')
     description = models.TextField(blank=True, null=True)
     ordre = models.PositiveIntegerField(default=1)
+    #Niveau utilisé en cas de Cours Standard/Approfondissement
+    niveau_module = models.PositiveIntegerField(
+        choices=[(1, 'Débutant'), (2, 'Intermédiaire'), (3, "Avancé")],
+        null=True, blank=True
+    )
     class Meta:
         constraints = [
             models.UniqueConstraint(
@@ -34,3 +39,46 @@ class Module(models.Model):
 
     def __str__(self):
         return f"{self.titre} ({self.cours.titre})"
+
+class Exercice(models.Model):
+    TYPES = [
+        ('QCM', 'Questionnaire à choix multiples'),
+        ('CODE', 'Exercice de programmation'),
+    ]
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='exercices')
+    titre = models.CharField(max_length=150)
+    enonce = models.TextField()
+    type_exercice = models.CharField(max_length=10, choices=TYPES)
+    #Niveau utilisée en cas de Test de Positionnement
+    niveau_exercice = models.PositiveIntegerField(
+        choices=[(1, 'Débutant'), (2, 'Intermédiaire'), (3, "Avancé")],
+        null=True, blank=True
+    )
+    def __str__(self):
+        return f"{self.titre} - {self.type_exercice}"
+
+# --- Exercice Type QCM ---
+
+class QuestionQCM(models.Model):
+    exercice = models.ForeignKey(Exercice, on_delete=models.CASCADE, related_name='questions')
+    texte = models.TextField()
+
+class Choix(models.Model):
+    question = models.ForeignKey(QuestionQCM, on_delete=models.CASCADE, related_name='choix')
+    texte = models.CharField(max_length=255)
+    est_correct = models.BooleanField(default=False)
+
+# --- Exercice Type Programmation ---
+
+class ExerciceCode(models.Model):
+    LANGUAGES = [
+        ('python', 'Python'),
+        ('java', 'JAVA'),
+        ('javascript', 'Javascript'),
+        ('php', 'PHP'),
+        ('html', 'HTML/CSS'),
+    ]
+    exercice = models.OneToOneField(Exercice, on_delete=models.CASCADE, related_name='contenu_code')
+    langage = models.CharField(max_length=20, choices=LANGUAGES)
+    code_initial = models.TextField(blank=True, help_text="Code affiché au début")
+    solution_attendue = models.TextField(help_text="Code de référence ou résultat attendu")
