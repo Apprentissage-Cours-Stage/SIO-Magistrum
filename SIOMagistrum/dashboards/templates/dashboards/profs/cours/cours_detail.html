@@ -34,7 +34,7 @@
                 {% if modules %}
                 <div class="liste-modules">
                     {% for m in modules %}
-                    <div class="carte-module">
+                    <div class="carte-module" data-href="{% url 'module_detail' m.id %}">
                         <div class="carte-header">
                             <h3>{{m.ordre}}. {{m.titre}}</h3>
                             <div class="carte-actions">
