@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SIO Magistrum - Détails du Module {{module.titre}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'dashboards/CSS/cours/module/module_details.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/header.css' %}">
+    <link rel="stylesheet" href="{% static 'partials/footer.css' %}">
+</head>
+
+<body>
+    {% include 'partials/header.html' %}
+    <main>
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="{% url 'cours_detail' module.cours.id %}">{{ module.cours.titre }}</a> >
+                <span>{{ module.titre }}</span>
+            </nav>
+
+            <section class="exercises-list">
+                <div class="section-header">
+                    <h2>Exercices prévus</h2>
+                    <button id="addExercice" class="btn-add">+</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordre</th>
+                            <th>Titre</th>
+                            <th>Type</th>
+                            {% if is_positionnement %}<th>Niveau Cible</th>{% endif %}
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ex in exercices %}
+                        <tr>
+                            <td>{{ ex.ordre }}</td>
+                            <td>{{ ex.titre }}</td>
+                            <td><span class="badge-type">{{ ex.type_exercice }}</span></td>
+                            {% if is_positionnement %}
+                            <td>{{ ex.get_niveau_exercice_display }}</td>
+                            {% endif %}
+                            <td>
+                                <a href="{% if ex.type_exercice == 'CODE' %}{% url 'setup_code' ex.id %}{% else %}{% url 'setup_qcm' ex.id %}{% endif %}"
+                                    class="btn-config">
+                                    ⚙️ Configurer
+                                </a>
+                                <form method="POST" action="{% url 'delete_exercice' ex.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-danger">🗑️</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">Aucun exercice pour le moment.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    {% include 'partials/footer.html' %}
+    <div id="modalAjoutExercice" class="modal">
+        <div class="modal-content" style="width: 600px;"> <span class="close close-ex">&times;</span>
+            <h2>Créer un exercice</h2>
+            <form method="POST" id="form-exercice">
+                {% csrf_token %}
+
+                <label for="titre_ex">Titre de l'exercice :</label>
+                <input type="text" id="titre_ex" name="titre" placeholder="Ex: Boucles For en Python" required>
+
+                <label for="type_ex">Type de l'exercice :</label>
+                <select id="type_ex" name="type_exercice" onchange="toggleCodeSection()">
+                    <option value="QCM">Questionnaire (QCM)</option>
+                    <option value="CODE">Code Pratique (Docker)</option>
+                </select>
+
+                <div id="section-code-test"
+                    style="display: none; margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px;">
+                    <label>Code de l'exercice (à tester) :</label>
+                    <textarea id="code_test" name="code_initial" class="code-editor" style="height: 150px;"></textarea>
+
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                        <button type="button" id="btn-tester-docker" data-url="{% url 'tester_code_docker' %}"
+                            onclick="testerCodeDocker()" class="btn-add"
+                            style="background-color: #27ae60; font-size: 0.9rem;">
+                            ▶️ Tester avec Docker
+                        </button>
+                        <div id="loader-docker" class="loader" style="display:none;"></div>
+                    </div>
+
+                    <div id="console-resultat" class="console" style="display: none;">
+                        <pre id="output-text"></pre>
+                    </div>
+                </div>
+
+                {% if module.cours.type_cours == 'Positionnement' %}
+                <label for="niveau_ex">Niveau de difficulté :</label>
+                <select id="niveau_ex" name="niveau_exercice">
+                    <option value="1">1 - Débutant</option>
+                    <option value="2">2 - Intermédiaire</option>
+                    <option value="3">3 - Avancé</option>
+                </select>
+                {% endif %}
+
+                <button type="submit" name="exercice-submit" class="btn-cours">Créer et Enregistrer</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static 'dashboards/JAVASCRIPT/cours/module/module_details.js' %}"></script> 
+</html>
