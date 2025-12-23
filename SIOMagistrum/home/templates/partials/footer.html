@@ -11,9 +11,7 @@
             {% if request.user.is_authenticated %}
                 {% if request.user.professeur %}
                     <a href="{% url 'dashboard_prof' %}">Dashboard</a>
-                    <a href="#">Vos Exercices</a>
                     <a href="#">Vos Classes</a>
-                    <a href="#">Votre Parcours d'entrainement</a>
                     <a href="#">Vos Approfondissements</a>
                 {% else %}
                     <a href="#">Dashboard</a>
