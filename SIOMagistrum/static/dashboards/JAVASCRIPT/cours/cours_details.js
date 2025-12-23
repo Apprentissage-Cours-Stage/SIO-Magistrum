@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    document.querySelectorAll('.carte-module').forEach(card => {
+        card.addEventListener('click', e => {
+            if (!e.target.closest('.btn-modify')) { // ignore si on clique sur le bouton
+                const url = card.dataset.href;
+                if (url) window.location.href = url;
+            }
+        });
+    });
+
     /* ----------------------------- */
     /*  MODAL AJOUT MODULE           */
     /* ----------------------------- */
