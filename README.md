@@ -82,7 +82,7 @@ README.md
 ## Perspectives d’évolution
 
 - Finalisation de la containerisation Docker
-- Passage complet à PostgreSQL
+- Finalisation du suivi élève et de la partie élève
 - Amélioration du suivi pédagogique
 - Gestion avancée des rôles et permissions
 - Enrichissement des contenus pédagogiques
