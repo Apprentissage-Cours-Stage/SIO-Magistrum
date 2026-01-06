@@ -61,20 +61,20 @@ Cette démarche met en évidence la capacité à :
 
 ## Structure du projet
 
-SIOMagistrum/
-├── manage.py
-├── requirements.txt
-├── SIOMagistrum/ # Configuration principale Django
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
-├── dashboards/ # Application dashboard (seulement professeur)
-├── executor/ # Execution Docker (Finalisée mais non-fonctionnel)
-├── home/ # Page d'accueil
-├── users/ # Connexion / Inscription
-├── media/ # Photos lors de la créations
-└── static/ # Fichiers statiques (CSS, JS, images)
-README.md
+SIOMagistrum/<br>
+├── manage.py<br>
+├── requirements.txt<br>
+├── SIOMagistrum/ # Configuration principale Django<br>
+│ ├── settings.py<br>
+│ ├── urls.py<br>
+│ └── wsgi.py<br>
+├── dashboards/ # Application dashboard (seulement professeur)<br>
+├── executor/ # Execution Docker (Finalisée mais non-fonctionnel)<br>
+├── home/ # Page d'accueil<br>
+├── users/ # Connexion / Inscription<br>
+├── media/ # Photos lors de la créations<br>
+└── static/ # Fichiers statiques (CSS, JS, images)<br>
+README.md<br>
 .gitignore
 
 ---
