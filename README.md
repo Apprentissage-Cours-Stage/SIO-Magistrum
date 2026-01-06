@@ -1,10 +1,10 @@
-# 🎓 SIO-Magistrum
+# SIO-Magistrum
 
 Plateforme e-learning développée dans le cadre du **BTS SIO – Projet de deuxième année (B2)**.
 
 ---
 
-## 📌 Présentation
+## Présentation
 
 **SIO-Magistrum** est une plateforme pédagogique conçue dans le cadre du  
 **BTS Services Informatiques aux Organisations (SIO)**, option **SLAM**.
@@ -20,7 +20,7 @@ Ce projet a été pensé comme un travail de **B2**, visant à démontrer :
 
 ---
 
-## 🚧 État d’avancement du projet
+## État d’avancement du projet
 
 Le projet est **fonctionnel dans sa base**, mais **non finalisé** à ce stade.
 
@@ -38,17 +38,17 @@ Cette démarche met en évidence la capacité à :
 
 ---
 
-## 🚀 Fonctionnalités actuelles
+## Fonctionnalités actuelles
 
-- 📚 Gestion des **cours** et **modules pédagogiques**
-- 👤 Espace utilisateur (**étudiants (Commencée) / enseignants**)
-- 📝 Suivi des activités
-- 🔐 Architecture Django structurée (apps, modèles, vues, templates)
-- 🐳 Début d’intégration **Docker** (non finalisée)
+- Gestion des **cours** et **modules pédagogiques**
+- Espace utilisateur (**étudiants (Commencée) / enseignants**)
+- Suivi des activités
+- Architecture Django structurée (apps, modèles, vues, templates)
+- Début d’intégration **Docker** (non finalisée)
 
 ---
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 | Technologie | Rôle |
 |------------|------|
@@ -59,7 +59,7 @@ Cette démarche met en évidence la capacité à :
 
 ---
 
-## 📂 Structure du projet
+## Structure du projet
 
 SIOMagistrum/
 ├── manage.py
@@ -79,7 +79,7 @@ README.md
 
 ---
 
-## 🔮 Perspectives d’évolution
+## Perspectives d’évolution
 
 - Finalisation de la containerisation Docker
 - Passage complet à PostgreSQL
@@ -90,7 +90,7 @@ README.md
 
 ---
 
-## 📄 Contexte pédagogique
+## Contexte pédagogique
 
 Projet réalisé dans le cadre du **BTS SIO – option SLAM**,  
 épreuve **E6 / Projet B2**.
@@ -104,7 +104,7 @@ Ce dépôt constitue un support de démonstration des compétences acquises en :
 
 ---
 
-## 📜 Licence
+## Licence
 
 Projet à vocation pédagogique.  
 Toute réutilisation doit mentionner le contexte académique du projet.
